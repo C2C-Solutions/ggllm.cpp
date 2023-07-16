@@ -4554,7 +4554,7 @@ int falcon_eval(
         struct falcon_context * ctx,
            const falcon_token * tokens,
                          falcon_evaluation_config &configuration) {
-    //  fprintf(stderr, "falcon_eval: n_tokens=%d, n_past=%d, n_threads=%d\n", n_tokens, n_past, n_threads);
+    //   fprintf(stderr, "falcon_eval: n_tokens=%d, n_past=%d, n_threads=%d\n", configuration.n_tokens, configuration.n_past, configuration.n_threads);
     // fprintf(stderr, "n_ctx=%d, n_embd=%d, n_head=%d, n_layer=%d, n_vocab=%d\n", ctx->model.hparams.n_ctx, ctx->model.hparams.n_embd, ctx->model.hparams.n_head, ctx->model.hparams.n_layer, ctx->model.hparams.n_vocab);
     FALCON_ASSERT(ctx->model.hparams.n_ctx >= (configuration.n_past+configuration.n_tokens)); // kv buffer overflow
     #if defined(GGML_USE_CUBLAS)

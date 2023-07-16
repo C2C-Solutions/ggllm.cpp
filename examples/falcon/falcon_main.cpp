@@ -1185,8 +1185,9 @@ fprintf(stderr, "+------------+-------+-------+-------+-------+---------------+-
         #endif
 
         // end of text token or stopword detected in generated content
-        if ((!embd.empty() && embd.back() == falcon_token_eos() && n_past_total > embd_inp.size()) || stopword_fulfilled) 
+        if ((!embd.empty() && embd.back() == falcon_token_eos() && n_consumed >= embd_inp.size()) || stopword_fulfilled) 
         {
+            // printf("embd.size(): %d, embd.back(): %d, n_past_total: %d, embd_inp.size(): %d, n_consumed: %d, n_remain: %d\n",embd.size(), embd.back(), n_past_total, embd_inp.size() , n_consumed, n_remain);
             if (params.instruct) 
             {
                 is_interacting = true;
